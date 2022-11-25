@@ -30,7 +30,7 @@ class LoginPage extends React.Component {
       console.log(this.state.user);
       
 
-      fetch("http://localhost:8000/api/register/",
+      fetch("http://localhost:8000/api/login/",
         {
           method: "POST",
           cache: "no-cache",
@@ -48,14 +48,20 @@ class LoginPage extends React.Component {
             <h2>Sign in to us</h2>
             <form action="/home">
                 <p>
-                    <label>Username or email address</label><br/>
-                    <input type="text" name="first_name" required />
+                    <label>Username</label><br/>
+                    <input type="text" name="username"
+                     value={this.state.username}  
+                     onChange={this.handleChange}
+                     required />
                 </p>
                 <p>
                     <label>Password</label>
                     <Link to="/forget-password"><label className="right-label">Forget password?</label></Link>
                     <br/>
-                    <input type="password" name="password" required />
+                    <input type="password" name="password" 
+                    value={this.state.password}  
+                    onChange={this.handleChange}
+                    required />
                 </p>
                 <p>
                     <button id="sub_btn" type="submit">Login</button>
