@@ -4,7 +4,44 @@ import { Link } from 'react-router-dom'
 import '../../App.css'
 import BackgroundImage from '../../assets/images/bg.jpg'
 
-export default function SignInPage() {
+class LoginPage extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {user:{username: '',
+      
+      password:''}
+    };
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+        const user = this.state.user;
+        user.username = event.target.value;
+        user.password = event.target.value;
+        
+      
+      
+    }
+  
+    handleSubmit(event) {
+      
+      console.log(this.state.user);
+      
+
+      fetch("http://localhost:8000/api/register/",
+        {
+          method: "POST",
+          cache: "no-cache",
+          headers: {
+            "Content_type": "application/json"
+          },
+          body: JSON.stringify(this.state.user),
+        })
+        .then(response => response.json())
+    }
+    render(){
     return (
         <header style={ HeaderStyle }>
         <div className="text-center m-5-auto">
@@ -31,8 +68,9 @@ export default function SignInPage() {
         </div>
         </header>
     )
-}
-const HeaderStyle = {
+    }
+};
+    const HeaderStyle = {
     width: "100%",
     height: "88vh",
     background: `url(${BackgroundImage})`,
@@ -40,3 +78,5 @@ const HeaderStyle = {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover"
 }
+
+export default LoginPage

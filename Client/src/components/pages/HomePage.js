@@ -49,8 +49,8 @@ const HomePage=()=>{
                
                 <p className="til1">{post.title}</p><br/>
                 
-                <center><img src={post.url}></img></center>
-               <center><img className="check" src={post.thumbnailUrl}></img></center>
+                <center><img src={post.url} alt="img"></img></center>
+               <center><img className="check" src={post.thumbnailUrl} alt="img2"></img></center>
                 
                 </li>
               );
